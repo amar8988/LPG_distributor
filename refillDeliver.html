@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Product delivery</title>
+
+<link rel="stylesheet" href="" th:href="@{/css/myStyle.css}" />
+
+</head>
+<body>
+	<h1 align="left">
+		<form th:action="@{/}">
+			<input type="image" src="/image/Home.jpg" width="35" height="30"  />
+		</form>
+	</h1>
+	
+	<form th:action="@{/deliveredCylinder}" th:object="${cylinderDelivery}" method="post">
+		<table align="center" border="0">
+		<caption><h1><u>Cylinder delivery</u></h1></caption>
+			<tr>
+				<th>Capacity <select name="capacity" th:field="*{capacity}">
+						<option value="">Select</option>
+						<option value="14.2">14.2Kg</option>
+						<option value="5">5Kg</option>
+						<option value="19">19Kg</option>
+				</select></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th>Type <select name="type" th:field="*{type}">
+						<option value="">Select</option>
+						<option value="subsidy">Subsidy</option>
+						<option value="commercial">Commercial</option>
+				</select></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th>Invoice no. <input type="text" value="" th:field="*{invoice}"></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th>Quantity <input type="text" th:field="*{quantity}"></th>
+			</tr>
+		</table>
+		<p align="center">
+			<input type="image" src="/image/Add.jpg" width="40" height="35"  />
+		</p>
+	</form>
+	<br/>
+	
+	<form th:action="@{/deliveredGoods}" th:object="${goodsDelivery}" method="post">
+		<table align="center">
+		<caption><h1><u>Goods delivery</u></h1></caption>
+			<tr>
+				<th>Name <select name="name" th:field="*{name}">
+						<option value="">Select</option>
+						<option value="stove">Stove</option>
+						<option value="Glass chulha">Glass chulha</option>
+						<option value="smart burner">Smart burner</option>
+						<option value="Hose pipe">Hose pipe</option>
+				</select></th>
+				<th></th>
+				<th></th>
+				<th>Type <select name="price" th:field="*{price}">
+						<option value="0">Select</option>
+						<option value="2200">Branded</option>
+						<option value="1900">Local</option>
+						<option value="990">Ujwala/BPL</option>
+						<option value="2800">glass_chulha</option>
+						<option value="3600">3_burner</option>
+						<option value="190">190/-</option>
+						<option value="100">100/-</option>
+				</select></th>
+				<th></th>
+				<th></th>
+				<th>Quantity <input type="text" th:field="*{quantity}"></th>
+			</tr>
+		</table>
+		<p align="center">
+			<input type="image" src="/image/Add.jpg" width="40" height="35"  />
+		</p>
+	</form>
+	<br/>
+	<br/>
+	<table align="center">
+		<tr>
+			<td><form th:action="@{/cylinderRecord}">
+					<input type="submit" value="Cylinder record" />
+				</form></td>
+			<td><form th:action="@{/productRecord}">
+					<input type="submit" value="Product record" />
+				</form></td>
+			<td><form th:action="@{/soldBuy}">
+					<input type="submit" value="Sold_Buy record" />
+				</form></td>
+		</tr>
+	</table>
+</body>
+</html>

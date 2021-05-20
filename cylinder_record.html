@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Cylinder record</title>
+
+<link rel="stylesheet" href="" th:href="@{/css/myStyle.css}" />
+
+</head>
+<body>
+	<h1 align="left">
+		<form th:action="@{/}">
+			<input type="image" src="/image/Home.jpg" width="35" height="30"  />
+		</form>
+	</h1>
+
+	<table align="center" border="1">
+		<tr>
+			<th>Capacity</th>
+			<th>Filled cylinder</th>
+			<th>Quantity</th>
+		</tr>
+		<div th:each="filledCylinder : ${filledCylinderList}">
+			<tr>
+				<td align="center"><div th:text="${filledCylinder.capacity+'Kg'}"></div></td>
+				<td align="center"><div th:text="${filledCylinder.type}"></div></td>
+				<td align="center"><div th:text="${filledCylinder.quantity+'P'}"></div></td>
+			</tr>
+		</div>
+	</table>
+	<br/>
+	<table align="center" border="1">
+		<tr>
+			<th>Capacity</th>
+			<th>Empty cylinder</th>
+			<th>Quantity</th>
+		</tr>
+		<div th:each="emptyCylinder : ${emptyCylinderList}">
+			<tr>
+				<td align="center"><div th:text="${emptyCylinder.capacity+'Kg'}"></div></td>
+				<td align="center"><div th:text="${emptyCylinder.type}"></div></td>
+				<td align="center"><div th:text="${emptyCylinder.quantity+'P'}"></div></td>
+			</tr>
+		</div>
+	</table>
+	<br />
+	<table align="center" border="1">
+		<tr>
+			<th>Capacity</th>
+			<th>Re-filled cylinder</th>
+			<th>Quantity</th>
+		</tr>
+		<div th:each="refilledCylinder : ${reFilledCylinderList}">
+			<tr>
+				<td align="center"><div th:text="${refilledCylinder.capacity+'Kg'}"></div></td>
+				<td align="center"><div th:text="${refilledCylinder.type}"></div></td>
+				<td align="center"><div th:text="${refilledCylinder.quantity+'P'}"></div></td>
+			</tr>
+		</div>
+	</table>
+	
+	<table align="center">
+		<tr>
+			<th>Total cylinder(in stock):</th>
+			<td><p th:text="${quantityInStock+'P'}"></p></td>
+		</tr>
+	</table>
+	<br/>
+	<table align="center">
+		<tr>
+			<td><form th:action="@{/productRecord}">
+					<input type="submit" value="Product record" />
+				</form></td>
+			<td><form th:action="@{/delivery}">
+					<input type="submit" value="Product delivery" />
+				</form></td>
+			<td><form th:action="@{/soldBuy}">
+					<input type="submit" value="Sold_Buy record" />
+				</form></td>
+		</tr>
+	</table>
+</body>
+</html>

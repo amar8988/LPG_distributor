@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Sale product</title>
+<link rel="stylesheet" href="" th:href="@{/css/myStyle.css}" />
+</head>
+<body>
+	<h1 align="center">
+		<u>Cylinder Selling</u>
+	</h1>
+	<form th:action="@{/saleCylinder}" th:object="${soldCylinder}"
+		method="post">
+		<table align="center" border="1">
+			<tr>
+				<th>Consumer no.</th>
+				<th>Cylinder type</th>
+				<th>Capacity</th>
+				<th>Customer type</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="consumerNumber" th:field="*{consumerNumber}" /></td>
+				<td><select name="type" th:field="*{type}">
+						<option value="">Select</option>
+						<option value="subsidy">Subsidy</option>
+						<option value="commercial">Commercial</option>
+				</select></td>
+				<td><select name="capacity" th:field="*{capacity}">
+						<option value=" ">Select</option>
+						<option value="14.2">14.2 Kg</option>
+						<option value="5">5 Kg</option>
+						<option value="19">19 Kg</option>
+				</select></td>
+				<td><select name="customerType" th:field="*{customerType}">
+						<option value="">Select</option>
+						<option value="old">Old</option>
+						<option value="new">New</option>
+				</select></td>
+			</tr>
+		</table>
+		<p align="center">
+			<input type="image" src="/image/sale.png" width="50" height="20"  />
+		</p>
+	</form>
+	<br/>
+	<br/>
+	<h1 align="center">
+		<u>Goods Selling</u>
+	</h1>
+	<form th:action="@{/saleGoods}" th:object="${soldGoods}" method="post">
+		<table align="center" border="1">
+			<tr>
+				<th>Product name</th>
+				<th>Product type</th>
+				<th>Quantity</th>
+			</tr>
+			<tr>
+				<td><select name="name" th:field="*{name}">
+						<option value="">Select</option>
+						<option value="stove">Stove</option>
+						<option value="Glass chulha">Glass chulha</option>
+						<option value="smart burner">Smart burner</option>
+						<option value="Hose pipe">Hose pipe</option>
+				</select></td>
+				<td><select name="goodsType" th:field="*{price}">
+						<option value="0">Select</option>
+						<option value="2200">Branded</option>
+						<option value="1900">Local</option>
+						<option value="990">Ujwala/BPL</option>
+						<option value="2800">glass_chulha</option>
+						<option value="3600">3_burner</option>
+						<option value="190">190/-</option>
+						<option value="100">100/-</option>
+				</select></td>
+				<td align="center"><select name="quantity" th:field="*{quantity}">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+				</select></td>
+			</tr>
+		</table>
+		<p align="center">
+			<input type="image" src="/image/sale.png" width="50" height="20"  />
+		</p>
+	</form>
+	<br/>
+	<table align="center">
+		<tr>
+			<td><form th:action="@{/cylinderRecord}">
+					<input type="submit" value="Cylinder record" />
+				</form></td>
+			<td><form th:action="@{/productRecord}">
+					<input type="submit" value="Product record" />
+				</form></td>
+			<td><form th:action="@{/delivery}">
+					<input type="submit" value="Product delivery" />
+				</form></td>
+			<td><form th:action="@{/soldBuy}">
+					<input type="submit" value="Sold_Buy record" />
+				</form></td>
+		</tr>
+	</table>
+
+	<br/>
+	<br/>
+	<table>
+		<caption>
+			<h3>
+				<u>Products in Stock</u>
+			</h3>
+		</caption>
+		<tr>
+			<th>Product name</th>
+			<th>Quantity</th>
+		</tr>
+		<div id="bgc" th:each="cylinder : ${cylinderList}">
+			<tr>
+				<td><div th:text="${cylinder.name}"></div></td>
+				<td align="center"><div th:text="${cylinder.quantity}"></div></td>
+			</tr>
+		</div>
+		<div id="bgc" th:each="goods : ${goodsList}">
+			<tr>
+				<td><div th:text="${goods.name}"></div></td>
+				<td align="center"><div th:text="${goods.quantity}"></div></td>
+			</tr>
+		</div>
+	</table>
+</body>
+</html>

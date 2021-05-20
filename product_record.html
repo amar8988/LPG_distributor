@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Product record</title>
+
+<link rel="stylesheet" href="" th:href="@{/css/myStyle.css}" />
+
+</head>
+<body>
+	<h1 align="left">
+		<form th:action="@{/}">
+			<input type="image" src="/image/Home.jpg" width="35" height="30"  />
+		</form>
+	</h1>
+
+	<table align="center" border="1">
+		<caption>
+			<h3>
+				<u>Products in Stock</u>
+			</h3>
+		</caption>
+		<tr>
+			<th>Product name</th>
+			<th>Quantity</th>
+			<th>Price</th>
+		</tr>
+		<div th:each="cylinder : ${cylinderList}">
+		<tr>
+			<td align="center"><div th:text="${cylinder.name}"></div></td>
+			<td align="center"><div	th:text="${cylinder.quantity+'P'}"></div></td>
+		</tr>
+		</div>
+		<div th:each="goods : ${goodsList}">
+		<tr>
+			<td align="center"><div th:text="${goods.name}"></div></td>
+			<td align="center"><div th:text="${goods.quantity+'P'}"></div></td>
+			<td align="center"><div th:text="${goods.price}+'/-'"></div></td>
+		</tr>
+		</div>
+	</table>
+	<br/>
+	<table align="center">
+		<tr>
+			<td><form th:action="@{/cylinderRecord}">
+					<input type="submit" value="Cylinder record" />
+				</form></td>
+			<td><form th:action="@{/delivery}">
+					<input type="submit" value="Product delivery" />
+				</form></td>
+			<td><form th:action="@{/soldBuy}">
+					<input type="submit" value="Sold_Buy record" />
+				</form></td>
+		</tr>
+	</table>
+</body>
+</html>
